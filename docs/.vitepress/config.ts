@@ -17,8 +17,8 @@ export default defineConfig({
             items: [
                 { text: 'Index', link: '/test/' },
                 { text: 'Simple Counter', link: '/test/simple_counter' },
+                { text: 'コンポーネントテスト', link: '/test/component_test' },
                 { text: 'lodash を使って文字列をシャッフル', link: '/test/shuffle_string_with_lodash' },
-                { text: '文字数カウンター', link: '/test/character_counter' }
             ]
         }
         ],
