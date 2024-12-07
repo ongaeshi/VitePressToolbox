@@ -5,7 +5,7 @@
 </div>
 
 <script setup>
-// import CharCounter from './CharCounter.vue';
+import CharCounter from '../components/CharCounter.vue';
 import { ref } from 'vue';
 
 const textInput = ref("");
