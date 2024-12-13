@@ -2,5 +2,6 @@
 - [Simple Counter](./simple_counter)
 - [コンポーネントテスト](./component_test)
 - [lodash を使って文字列をシャッフル](./shuffle_string_with_lodash)
+- [RubyWASM テスト](./ruby_wasm_test)
 
 
