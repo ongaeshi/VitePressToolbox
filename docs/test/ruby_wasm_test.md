@@ -12,7 +12,7 @@
 </div>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref } from "vue";
 import { DefaultRubyVM } from "https://cdn.jsdelivr.net/npm/@ruby/wasm-wasi@2.7.0/dist/browser/+esm";
 
 const rubyCode = ref("");
@@ -28,7 +28,6 @@ const initializeRubyVM = async () => {
     const module = await WebAssembly.compileStreaming(response);
     const instance = await DefaultRubyVM(module);
     vm = instance.vm;
-    // output.value = "Ruby VM が初期化されました。";
   } catch (error) {
     output.value = `エラー: Ruby VM の初期化に失敗しました (${error.message})`;
   }
@@ -36,8 +35,10 @@ const initializeRubyVM = async () => {
 
 const runRubyCode = async () => {
   if (!vm) {
-    output.value = "エラー: Ruby VM が初期化されていません。";
-    return;
+    await initializeRubyVM();
+    if (!vm) {
+        return;
+    }
   }
   try {
     const result = vm.eval(rubyCode.value);
@@ -46,10 +47,6 @@ const runRubyCode = async () => {
     output.value = `エラー: ${error.message}`;
   }
 };
-
-onMounted(() => {
-  initializeRubyVM();
-});
 </script>
 
 <style>
